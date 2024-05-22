@@ -1,0 +1,20 @@
+<div class="bg-image" style="background-image: url(assets/images/light-patten.svg); height: 100vh;">
+    <div class="container position-relative">
+        <form class="my-5" [formGroup]="LoginForms" (ngSubmit)="submitLogin(LoginForms)">
+            <label for="">Email</label>
+            <input type="text" id="email" class="form-control my-2" formControlName="email">
+            <div *ngIf="LoginForms.get('email')?.errors && LoginForms.get('email')?.touched" class="alert alert-danger">
+                <p *ngIf="LoginForms.get('email')?.getError('required')">Email is required</p>
+                <p *ngIf="LoginForms.get('email')?.getError('email')">Email does not follow the email pattern</p>
+            </div>
+            <label for="">Password</label>
+            <input type="password" id="password" class="form-control my-2" formControlName="password">
+            <div *ngIf="LoginForms.get('password')?.errors && LoginForms.get('password')?.touched" class="alert alert-danger">
+                <p *ngIf="LoginForms.get('password')?.getError('required')">Password is required</p>
+            </div>
+            <button type="submit" class="btn btn-secondary position-absolute top-100 end-0 m-3">Login</button>
+
+        </form>
+    </div>
+</div>
+

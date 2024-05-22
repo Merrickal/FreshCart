@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <h3 class="mx-4">Your Cart</h3>
+    <div *ngFor="let item of items" class="row d-flex align">
+        <div class="card col-md-3 m-2" style="width: 12rem;" id="item_card" [routerLink]="['/home',item._id]">
+            <div class="card-img-top"><img [src]="item.product.imageCover" class="d-block " style="height: 160px; width: 160px;"></div>
+            <div class="card-body">
+                <p class="card-text">{{item.product.title}}</p>
+                <div class="d-flex align justify-content-between">
+                    <p class="card-text my-2">{{item.product.price}}EGP</p>
+                    <div class="d-flex">
+                        <i class="fa-solid fa-star text-warning align-self-center"></i>
+                        <p class="card-text my-2">{{item.product.ratingsAverage}}</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div>
+                <div class="mx-4"><h2>Your Total is: {{totalCartPrice}} EGP</h2></div>
+
+            </div>
+    </div>
+</div>

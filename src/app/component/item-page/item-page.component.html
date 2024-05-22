@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<div class="container-fluid">
+    <div class="d-flex ">
+        <div id="carouselExampleIndicators" class="carousel slide" style="width: 40vw;" >
+            <div class="carousel-indicators" style="background-color: rgba(137, 130, 130, 0.797);"> 
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            </div>
+            <div class="carousel-inner">
+            <div class="carousel-item active" *ngFor="let itemImage of item_details.images">
+                <img [src]="itemImage" class="d-block w-100 " style="height: 70vh;">
+            </div>
+            </div>
+            <button class="carousel-control-prev text-warning" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" style="background-color: rgba(137, 130, 130, 0.815);" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next " type="button"  data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" style="background-color: rgba(137, 130, 130, 0.815);" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div class="mx-3" style="max-width: 50vw;">
+            <h3>{{item_details.description}}</h3>
+            <p>{{item_details.category.name}}</p>
+            
+            <h6 class="my-2">{{item_details.sold}} Units Sold!</h6>
+            <p class="align-self-center m-0 mx-1">{{item_details.ratingsQuantity}} Ratings</p>
+            <div class="d-flex justify-content-between">
+                <h2>{{item_details.price}} EGP</h2>
+                <div class="d-flex align">
+                    <i class="fa-solid fa-star text-warning align-self-center"></i>
+                    <p class="align-self-center m-0">{{item_details.ratingsAverage}}</p>
+                </div>
+            </div>
+            
+            <div *ngIf="OutStock;else inStock">
+                <h3 class="text-danger">Out Stock</h3>
+            </div>
+            <ng-template #inStock>
+                <div class="row flex-column justify-content-center">
+                    <h3 class="col-4 text-success text-center mx-auto">In Stock</h3>
+
+                    <button class="col-12 btn mx-auto" style="background-color: rgb(8, 172, 10); color: white;" (click)="addToCart()">+Add to cart</button>
+                </div>
+            </ng-template>
+            
+        </div>
+    </div>
+
+</div>

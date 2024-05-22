@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center">
+        <div id="carousel" class="carousel slide " style="width: 90vw;" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              </div>
+            <div class="carousel-inner">
+            <div class="carousel-item active " style="height: 70vh; " data-bs-interval="10000">
+                <img src="/assets/images/slider-image-1.jpeg" style="max-height: 100%;" class="d-block w-100 img-fluid">
+            </div>
+            <div class="carousel-item" style="height: 70vh;" data-bs-interval="2000">
+                <img src="/assets/images/slider-2.jpeg" style="max-height: 100%;" class="d-block w-100 img-fluid">
+            </div>
+            <div class="carousel-item" style="height: 70vh;">
+                <img src="/assets/images/slider-image-3.jpeg" style="max-height: 100%;" class="d-block w-100">
+            </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <h4 class="col-11 my-2">Show Popular Categories</h4>
+        <div class="card col-md-3 m-2" style="width: 12rem;" id="item_card" *ngFor="let item of items" [routerLink]="['/home',item._id]">
+            <img [src]="item.imageCover" class="card-img-top">
+            <div class="card-body">
+                <p class="card-text">{{item.category.name}}</p>
+                <h6 class="card-text" style="font-size: small;">{{item.title.split(" ").splice(0,2).join(" ")}}</h6>
+                <div class="d-flex align justify-content-between">
+                    <p class="card-text my-2">{{item.price}}EGP</p>
+                    <div class="d-flex">
+                        <i class="fa-solid fa-star text-warning align-self-center"></i>
+                        <p class="card-text my-2">{{item.ratingsAverage}}</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

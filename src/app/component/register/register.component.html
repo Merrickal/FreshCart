@@ -1,0 +1,38 @@
+<div class="bg-image" style="background-image: url(assets/images/light-patten.svg); height: 100vh;">
+    <div class="container position-relative">
+        <form class="my-5" [formGroup]="RegisterForms" (ngSubmit)="submitRegister(RegisterForms)">
+            <label for="">Name</label>
+            <input type="text" id="name" class="form-control my-2" formControlName="name">
+            <div *ngIf="RegisterForms.get('name')?.errors && RegisterForms.get('name')?.touched" class="alert alert-danger">
+                <p *ngIf="RegisterForms.get('name')?.getError('required')">Name is required</p>
+                <p *ngIf="RegisterForms.get('name')?.getError('minlength')">Name is short</p>
+                <p *ngIf="RegisterForms.get('name')?.getError('maxlength')">Name is long</p>
+            </div>
+            <label for="">Email</label>
+            <input type="text" id="email" class="form-control my-2" formControlName="email">
+            <div *ngIf="RegisterForms.get('email')?.errors && RegisterForms.get('email')?.touched" class="alert alert-danger">
+                <p *ngIf="RegisterForms.get('email')?.getError('required')">Email is required</p>
+                <p *ngIf="RegisterForms.get('email')?.getError('email')">Email does not follow the email pattern</p>
+            </div>
+            <label for="">Password</label>
+            <input type="password" id="password" class="form-control my-2" formControlName="password">
+            <div *ngIf="RegisterForms.get('password')?.errors && RegisterForms.get('password')?.touched" class="alert alert-danger">
+                <p *ngIf="RegisterForms.get('password')?.getError('required')">Password is required</p>
+            </div>
+            <label for="">rePassword</label>
+            <input type="password" id="rePassword" class="form-control my-2" formControlName="rePassword">
+            <div *ngIf="RegisterForms.get('rePassword')?.errors && RegisterForms.get('rePassword')?.touched" class="alert alert-danger">
+                <p *ngIf="RegisterForms.get('rePassword')?.getError('required')">rePassword is required</p>
+            </div>
+            <label for="">Phone</label>
+            <input type="text" id="phone" class="form-control my-2" formControlName="phone">
+            <div *ngIf="RegisterForms.get('phone')?.errors && RegisterForms.get('phone')?.touched" class="alert alert-danger">
+                <p *ngIf="RegisterForms.get('phone')?.getError('required')">Phone Number is required</p>
+                <p *ngIf="RegisterForms.get('phone')?.getError('pattern')">Phone Number does not follow our phone number pattern</p>
+            </div>
+            <button type="submit" class="btn btn-secondary position-absolute top-100 end-0 m-3">Login</button>
+
+        </form>
+    </div>
+</div>
+
